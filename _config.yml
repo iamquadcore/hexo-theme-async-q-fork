@@ -383,3 +383,5 @@ not_found:
   path: / # Return path | 返回路径
   name: not_found.name # Button text 按钮显示文案
   text: not_found.text # Tips | 提示文案
+
+custom_setting: "default theme config value"
