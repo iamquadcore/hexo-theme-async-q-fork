@@ -1,24 +1,22 @@
 {
-    "name": "hexo-theme-async",
-    "version": "2.2.3",
-    "description": "🎈 A simple, lightweight Hexo theme",
+    "name": "hexo-theme-async-q-fork",
+    "version": "1.0.0",
+    "description": "Hexo theme Async forked version",
+    "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/MaLuns/hexo-theme-async.git"
+        "url": "git+https://github.com/iamquadcore/hexo-theme-async-q-fork.git#main"
     },
     "keywords": [
         "hexo-theme",
         "hexo",
         "theme",
         "blog",
-        "cms"
+        "cms",
+        "async"
     ],
-    "author": "Maluns <admin@imalun.com>",
+    "author": "Quadro",
     "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/MaLuns/hexo-theme-async/issues"
-    },
-    "homepage": "https://hexo-theme-async.imalun.com",
     "files": [
         "languages",
         "layout",
@@ -27,7 +25,6 @@
         "src",
         "_config.yml",
         "plugins.yml",
-        "README_zh-CN.md",
         "README.md"
     ]
 }
