@@ -25,9 +25,6 @@ if (page.og_image) {
   ogImage = config.url + (config.og_image.startsWith('/') ? config.og_image : '/' + config.og_image);
 }
 
-// デバッグ用のコンソールログ（必要に応じて削除）
-console.log('OG Image URL:', ogImage);
-
 // サイト全体のURLを正しく設定
 let ogUrl = config.url + page.path;
 %>
