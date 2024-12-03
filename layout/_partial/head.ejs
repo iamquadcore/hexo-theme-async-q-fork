@@ -6,12 +6,23 @@
 
 <%
 let ogImage = '';
+// 絶対パスかどうかをチェックする関数
+function isAbsoluteUrl(url) {
+  return /^https?:\/\//i.test(url);
+}
+
 if (page.og_image) {
-  // 記事固有のOGP画像が設定されている場合
-  ogImage = url_for(page.og_image);
+  // 記事固有の画像が設定されている場合
+  if (isAbsoluteUrl(page.og_image)) {
+    // すでに絶対パスの場合はそのまま使用
+    ogImage = page.og_image;
+  } else {
+    // 相対パスの場合はconfig.urlと結合
+    ogImage = config.url + (page.og_image.startsWith('/') ? page.og_image : '/' + page.og_image);
+  }
 } else if (config.og_image) {
   // サイトのデフォルトOGP画像を使用
-  ogImage = url_for(config.og_image);
+  ogImage = config.url + (config.og_image.startsWith('/') ? config.og_image : '/' + config.og_image);
 }
 
 // サイト全体のURLを正しく設定
