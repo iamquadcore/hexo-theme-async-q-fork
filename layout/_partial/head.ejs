@@ -6,33 +6,27 @@
 
 <%
 let ogImage = '';
-// 絶対パスかどうかをチェックする関数
 function isAbsoluteUrl(url) {
   return /^https?:\/\//i.test(url);
 }
 
-if (page.og_image) {
-  // 記事固有の画像が設定されている場合
-  if (isAbsoluteUrl(page.og_image)) {
-    // すでに絶対パスの場合はそのまま使用
-    ogImage = page.og_image;
-  } else {
-    // 相対パスの場合は絶対URLを生成
-    ogImage = config.url + (page.og_image.startsWith('/') ? page.og_image : '/' + page.og_image);
-  }
-} else if (config.og_image) {
-  // サイトのデフォルトOGP画像を使用
-  ogImage = config.url + (config.og_image.startsWith('/') ? config.og_image : '/' + config.og_image);
+// 明示的に404.jpgを除外する処理を追加
+function isValid404Image(url) {
+  return !url.includes('404.jpg');
 }
 
-// サイト全体のURLを正しく設定
-let ogUrl = config.url + page.path;
+if (page.og_image && isValid404Image(page.og_image)) {
+  // 記事固有の画像が設定されている場合
+  if (isAbsoluteUrl(page.og_image)) {
+    ogImage = page.og_image;
+  } else {
+    ogImage = config.url + (page.og_image.startsWith('/') ? page.og_image : '/' + page.og_image);
+  }
+} else if (config.og_image && isValid404Image(config.og_image)) {
+  // サイト全体のデフォルトOGP画像
+  ogImage = config.url + (config.og_image.startsWith('/') ? config.og_image : '/' + config.og_image);
+}
 %>
-<meta property="og:title" content="<%= page.title || config.title %>">
-<meta property="og:type" content="<%= page.layout === 'post' ? 'article' : 'website' %>">
-<meta property="og:url" content="<%= ogUrl %>">
-<meta property="og:site_name" content="<%= config.title %>">
-<meta property="og:description" content="<%= page.description || page.excerpt || config.description %>">
 <% if (ogImage) { %>
 <meta property="og:image" content="<%= ogImage %>">
 <meta property="og:image:width" content="1200">
@@ -40,9 +34,6 @@ let ogUrl = config.url + page.path;
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="<%= ogImage %>">
 <% } %>
-
-<title>かじ/Quadroのぼんやりつぶやき</title>
-<meta name="description" content="かじ/Quadroのぼんやりつぶやき CG/映像/ゲーム/雑談">
 
 <%- theme.open_graph ? open_graph() : ''%>
 <% if(page.keywords){%>
