@@ -9,15 +9,18 @@ let ogImage = '';
 function isAbsoluteUrl(url) {
   return /^https?:\/\//i.test(url);
 }
-
-if (page.og_image) {
+// 明示的に404.jpgを除外する処理を追加
+function isValid404Image(url) {
+  return !url.includes('404.jpg');
+}
+if (page.og_image && isValid404Image(page.og_image)) {
   // 記事固有の画像が設定されている場合
   if (isAbsoluteUrl(page.og_image)) {
     ogImage = page.og_image;
   } else {
     ogImage = config.url + (page.og_image.startsWith('/') ? page.og_image : '/' + page.og_image);
   }
-} else if (config.og_image) {
+} else if (config.og_image && isValid404Image(config.og_image)) {
   // サイト全体のデフォルトOGP画像
   ogImage = config.url + (config.og_image.startsWith('/') ? config.og_image : '/' + config.og_image);
 }
