@@ -17,13 +17,16 @@ if (page.og_image) {
     // すでに絶対パスの場合はそのまま使用
     ogImage = page.og_image;
   } else {
-    // 相対パスの場合はconfig.urlと結合
+    // 相対パスの場合は絶対URLを生成
     ogImage = config.url + (page.og_image.startsWith('/') ? page.og_image : '/' + page.og_image);
   }
 } else if (config.og_image) {
   // サイトのデフォルトOGP画像を使用
   ogImage = config.url + (config.og_image.startsWith('/') ? config.og_image : '/' + config.og_image);
 }
+
+// デバッグ用のコンソールログ（必要に応じて削除）
+console.log('OG Image URL:', ogImage);
 
 // サイト全体のURLを正しく設定
 let ogUrl = config.url + page.path;
