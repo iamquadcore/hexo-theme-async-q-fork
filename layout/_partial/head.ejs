@@ -33,7 +33,6 @@ if (page.og_image && isValid404Image(page.og_image)) {
 <meta name="twitter:image" content="<%= ogImage %>">
 <% } %>
 
-<%- theme.open_graph ? open_graph() : ''%>
 <% if(page.keywords){%>
     <meta name="keywords" content="<%= page.keywords %>">
 <%}else if(config.keywords){%>
