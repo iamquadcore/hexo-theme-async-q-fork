@@ -33,6 +33,22 @@ if (page.og_image && isValid404Image(page.og_image)) {
 <meta name="twitter:image" content="<%= ogImage %>">
 <% } %>
 
+<% if (page.title) { %>
+    <meta property="og:title" content="<%= page.title %>">
+    <meta name="twitter:title" content="<%= page.title %>">
+<% } else if (config.title) { %>
+    <meta property="og:title" content="<%= config.title %>">
+    <meta name="twitter:title" content="<%= config.title %>">
+<% } %>
+
+<% if (page.description) { %>
+    <meta property="og:description" content="<%= page.description %>">
+    <meta name="twitter:description" content="<%= page.description %>">
+<% } else if (config.description) { %>
+    <meta property="og:description" content="<%= config.description %>">
+    <meta name="twitter:description" content="<%= config.description %>">
+<% } %>
+
 <% if(page.keywords){%>
     <meta name="keywords" content="<%= page.keywords %>">
 <%}else if(config.keywords){%>

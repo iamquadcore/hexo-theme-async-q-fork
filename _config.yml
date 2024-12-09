@@ -300,7 +300,7 @@ datetime_foramt:
     time: HH:mm # 时间
   archive: # 归档分类页的格式
     type: date # 日期取值 <[date,updated]>
-    date: MM/DD # 日期
+    date: YYYY/MM/DD # 日期
     time: HH:mm # 时间
 
 # Home page category card configuration | 首页分类卡片
