@@ -281,4 +281,14 @@ each(@marginKey, {
 	.trm-mt-@{value} {
 		margin-top: unit(@value, px);
 	}
+
+	.trm-divider-dash {
+		border-top: 1px dashed #ffffff;  /* 白色の点線 */
+		opacity: 0.15;                   /* 要素全体の透明度を設定 */
+		width: 100%;
+		border-style: dashed;
+		border-width: 0.01px;
+		margin: 20px 0;
+		background: none;
+	}
 });
