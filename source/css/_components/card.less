@@ -179,17 +179,20 @@
 // main card
 .trm-main-card-frame {
 	position: relative;
-	z-index: 2;
-	transform: translateY(-410px);
+    z-index: 2;
+    transform: translateY(-410px);
+    /* 以下を追加 */
+    height: 100vh; /* ビューポートの高さいっぱいに */
+    overflow-y: auto; /* 縦方向のスクロールを有効に */
 
 	.trm-main-card {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		padding: var(--card-padding, 40px);
-		border-radius: var(--card-border-radius, 10px);
+		border-radius: var(--card-border-radius, 10px) !important;
 		width: 100%;
-		height: calc(100vh - 100px);
+		height: auto; /* コンテンツに合わせて自動的に高さを調整 */
 		box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.15);
 		background-color: var(--theme-bg-color, #fcfcfe);
 
@@ -271,14 +274,17 @@
 }
 
 @media (max-width: 992px) {
-	.trm-main-card-frame {
-		transform: translateY(-40px);
-
-		.trm-main-card {
-			border-radius: var(--card-border-radius, 10px) !important;
-			height: auto;
-		}
-	}
+    .trm-main-card-frame {
+        transform: translateY(-40px);
+        .trm-main-card {
+            border-radius: var(--card-border-radius, 10px) !important;
+            /* height: auto を削除または以下のように固定値を設定 */
+            height: 100vh; /* または具体的なピクセル値、例: 800px */
+            /* または最小高さを設定 */
+            min-height: 100vh;
+			overflow-y: auto
+        }
+    }
 }
 
 .trm-mc-header {
