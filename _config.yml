@@ -48,8 +48,8 @@ assets:
       main: js/main.js
   icons: ## Icon configuration
     type: font # font symbol
-    css: css/plugins/font-awesome.min.css # icon css
-    js: # icon js
+    css: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css # icon css
+    js: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js # icon js
 
 ## CDN User - defined plug-in
 cdn:
